@@ -1,4 +1,16 @@
 {
+    "name": "vekas/ResponseManager",
+    "type": "library",
+    "description": "Response Manager For php-8",
+    "keywords": ["manager","response generator"],
+    "homepage": "https://github.com/ahmedJS/Vekas-ResponseManager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmed H. Sadiq",
+            "email": "ahmed_alsadi56@outlook.com",
+            "role": "Developer"
+        }],
     "require": {
         "phpunit/phpunit": "^10.2",
         "tuupola/http-factory": "^1.4",

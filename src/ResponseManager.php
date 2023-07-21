@@ -2,7 +2,7 @@
 namespace Vekas\ResponseManager;
 use Psr\Http\Message\ResponseInterface;
 use Tuupola\Http\Factory\ResponseFactory;
-use Vekas\ResponseManager\Exceptions\TemplateNotFoundException as TemplateNotFoundException;
+use Vekas\ResponseManager\exceptions\TemplateNotFoundException as TemplateNotFoundException;
 use Vekas\ResponseManager\IResponseManager;
 
 class ResponseManager implements IResponseManager{

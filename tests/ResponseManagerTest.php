@@ -1,8 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use SebastianBergmann\Template\Template;
 use Tuupola\Http\Factory\ResponseFactory;
-use Vekas\ResponseManager\Exeptions\TemplateNotFoundException;
+use Vekas\ResponseManager\exceptions\TemplateNotFoundException;
 use Vekas\ResponseManager\ResponseManager;
 
 class ResponseManagerTest extends TestCase {
@@ -15,14 +16,14 @@ class ResponseManagerTest extends TestCase {
         $response = $responseManager->getResponse("api-presentation-v1");
         $this->assertInstanceOf(ResponseInterface::class,$response);
     }
-    function testThrowtemplateNotFoundException(){
-        echo  \Vekas\ResponseManager\Exceptions\TemplateNotFoundException::class;
+
+    function testExpectingNotExistTemplateException(){
         $responseManager = new ResponseManager(new ResponseFactory());
         $responseManager->setData(["name" => "ahmed hassan sadiq"]);
         $responseManager->setTemplate("api-presentation-v1",function(ResponseFactory $responseFactory){
             return $responseFactory->createResponse(200);
         });
-        $response = $responseManager->getResponse("not-registered-template");
         $this->expectException(TemplateNotFoundException::class);
+        $responseManager->getResponse("not-registered-template");
     }
 }
