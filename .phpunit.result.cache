@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ResponseManagerTest::testsomething":5,"ResponseManagerTest::testCreateResponseManager":8,"ResponseManagerTest::testThrowtemplateNotFoundException":8},"times":{"ResponseManagerTest::testsomething":0.003,"ResponseManagerTest::testCreateResponseManager":0.003,"ResponseManagerTest::testThrowtemplateNotFoundException":0.005}}

@@ -1,0 +1,12 @@
+{
+    "require": {
+        "phpunit/phpunit": "^10.2",
+        "tuupola/http-factory": "^1.4",
+        "guzzlehttp/psr7": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vekas\\ResponseManager\\" : "src/"
+        }
+    }
+}
