@@ -19,10 +19,7 @@ class ResponseManager implements IResponseManager{
         return $this->data;
     }
     
-    /**
-     * @inheritDoc
-     */
-    function setTemplate($id,callable $template){
+    function setTemplate($id,callable | ResponseInterface $template){
         array_push($this->templates,[$id,$template]);
     }
 
@@ -38,7 +35,7 @@ class ResponseManager implements IResponseManager{
                 $_template = $template;
             }
         }
-        if(!isset($_template)) throw new  TemplateNotFoundException(`the template $templateId not found`);
+        if(!isset($_template)) throw new  TemplateNotFoundException(`template : $templateId not found`);
         $handler = $_template[1];
         return $handler($this->responseFactory,$this->getData());
     }

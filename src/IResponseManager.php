@@ -1,16 +1,11 @@
 <?php
 namespace Vekas\ResponseManager;
 use Psr\Http\Message\ResponseInterface;
-use Vekas\ResponseManager\exeptions\TemplateNotFound;
+use Vekas\ResponseManager\Exceptions\TemplateNotFoundException;
 interface IResponseManager {
-    function setData(array $data);
-    /**
-     * @param callable $template closure `must return ResponseInterface`
-     */
-    function setTemplate($id,callable $template);
 
     /**
-     * @throws TemplateNotFound
+     * @throws TemplateNotFoundException
      */
     function getResponse($templateId) : ResponseInterface;
 }
