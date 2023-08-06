@@ -1,5 +1,5 @@
 {
-    "name": "vekas/ResponseManager",
+    "name": "vekas/response-manager",
     "type": "library",
     "description": "Response Manager For php-8",
     "keywords": ["manager","response generator"],

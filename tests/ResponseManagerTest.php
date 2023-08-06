@@ -5,6 +5,7 @@ use SebastianBergmann\Template\Template;
 use Tuupola\Http\Factory\ResponseFactory;
 use Vekas\ResponseManager\exceptions\TemplateNotFoundException;
 use Vekas\ResponseManager\ResponseManager;
+use Vekas\ResponseManager\ResponseManagerFactory;
 
 class ResponseManagerTest extends TestCase {
     function testCreateResponseManager(){
@@ -25,5 +26,11 @@ class ResponseManagerTest extends TestCase {
         });
         $this->expectException(TemplateNotFoundException::class);
         $responseManager->getResponse("not-registered-template");
+    }
+
+    function testFactorResponseManager(){
+        $responseManager = new ResponseManagerFactory();
+        $responseManager = $responseManager->getResponseManager();
+        $this->assertInstanceOf(ResponseManager::class,$responseManager);
     }
 }
