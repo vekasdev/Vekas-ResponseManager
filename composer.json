@@ -14,11 +14,13 @@
     "require": {
         "phpunit/phpunit": "^10.2",
         "tuupola/http-factory": "^1.4",
-        "guzzlehttp/psr7": "^2.5"
+        "guzzlehttp/psr7": "^2.5",
+        "php-di/php-di" : "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Vekas\\ResponseManager\\" : "src/"
+            "Vekas\\ResponseManager\\" : "src/",
+            "Responses\\" : "responses/"
         }
     }
 }

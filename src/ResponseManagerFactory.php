@@ -1,10 +1,15 @@
 <?php
 namespace Vekas\ResponseManager;
 
+use Psr\Container\ContainerInterface;
 use Tuupola\Http\Factory\ResponseFactory;
 
 class ResponseManagerFactory {
-    function getResponseManager(){
-        return new ResponseManager(new ResponseFactory);
+    private IClassesLoader $loader;
+    function setFileLoader(IClassesLoader $loader){
+        $this->loader = $loader;
+    }
+    function getResponseManager(ContainerInterface $container){
+        return new ResponseManager($container,$this->loader??null);
     }
 }
