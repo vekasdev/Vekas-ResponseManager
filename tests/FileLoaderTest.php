@@ -18,4 +18,9 @@ class FileLoaderTest extends TestCase {
         $class = new ($fl->getClass("Error404Response"))($container);
         $this->assertInstanceOf(IResponseEntry::class,$class);
     }
+
+    function testInstantiateFileLoader(){
+        $fl = new FileLoader("Response",realpath(__DIR__."/../responses/"),"Responses");
+        $this->assertInstanceOf(FileLoader::class,$fl);
+    }
 }
