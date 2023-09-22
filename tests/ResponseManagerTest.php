@@ -38,7 +38,7 @@ class ResponseManagerTest extends TestCase {
     }
     function testCreateResponseManager(){
         $responseManager = $this->getResponseManager();
-        $responseManager->setData(["name" => "ahmed hassan sadiq"]);
+        $data = ["name" => "ahmed hassan sadiq"];
         $responseManager->setTemplate("api-presentation-v1",function(ContainerInterface $container){
             $responseFactory = $container->get(ResponseFactory::class);
             return $responseFactory->createResponse(200);
@@ -49,12 +49,12 @@ class ResponseManagerTest extends TestCase {
 
     function testExpectingNotExistTemplateException(){
         $responseManager = $this->getResponseManager();
-        $responseManager->setData(["name" => "ahmed hassan sadiq"]);
+        $data = ["name" => "ahmed hassan sadiq"];
         $responseManager->setTemplate("api-presentation-v1",function(ResponseFactory $responseFactory){
             return $responseFactory->createResponse(200);
         });
         $this->expectException(TemplateNotFoundException::class);
-        $responseManager->getResponse("not-registered-template");
+        $responseManager->getResponse("not-registered-template",data : $data);
     }
 
     function testGetResponseOfError404(){
