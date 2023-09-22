@@ -7,5 +7,5 @@ interface IResponseManager {
     /**
      * @throws TemplateNotFoundException
      */
-    function getResponse($templateId) : ResponseInterface;
+    function getResponse(string $templateId) : ResponseInterface;
 }

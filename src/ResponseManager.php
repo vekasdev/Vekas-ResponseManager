@@ -8,20 +8,13 @@ use Vekas\ResponseManager\exceptions\TemplateNotFoundException as TemplateNotFou
 use Vekas\ResponseManager\IResponseManager;
 
 class ResponseManager implements IResponseManager,ILoadableResponseManager{
-    protected array $data = [];
     protected array $templates=[];
     function __construct(
         private ContainerInterface $container,
         private FileLoader | null $fileLoader = null
         )
     {}
-    function setData(array $data){
-        $this->data = $data;
-    }
 
-    function getData() : array{
-        return $this->data;
-    }
     
     function setTemplate($id,callable | ResponseInterface $template){
         array_push($this->templates,[$id,$template]);
@@ -30,15 +23,15 @@ class ResponseManager implements IResponseManager,ILoadableResponseManager{
     /**
      * @inheritDoc
      */
-    function getResponse($templateId) : ResponseInterface{
+    function getResponse(string $templateId,array $data = []) : ResponseInterface{
         $template = $this->getTemplate($templateId);
         if ( $template !== false ) {
             $handler = $template[1];
             if($handler instanceof IResponseEntry ) {
-                return $handler($this->getData());
+                return $handler($data);
             }
         }
-        return $handler($this->container,$this->getData());
+        return $handler($this->container,$data);
     }
 
     private function getTemplate($templateId) : array{
