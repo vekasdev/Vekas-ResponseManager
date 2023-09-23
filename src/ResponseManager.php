@@ -23,7 +23,7 @@ class ResponseManager implements IResponseManager,ILoadableResponseManager{
     /**
      * @inheritDoc
      */
-    function getResponse(string $templateId, $data = null) : ResponseInterface{
+    function getResponse(string $templateId, mixed $data) : ResponseInterface{
         $template = $this->getTemplate($templateId);
         if ( $template !== false ) {
             $handler = $template[1];
